@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 :root {
@@ -10,7 +11,7 @@
   --light-red: #f46262;
   --gray: #bfbfbf;
   --dark-blue: #35323e;
-  --dark-violet: #232127;
+  --darkest-violet: #232127;
 }
 
 @media (max-width: 1080px) {
