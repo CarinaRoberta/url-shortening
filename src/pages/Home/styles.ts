@@ -6,6 +6,14 @@ const Container = styled.div`
   display: flex;
   margin: 0 auto;
   flex-direction: column;
+
+  @media (max-width: 1480px) {
+    padding: 0rem 10rem;
+  }
+
+  @media (max-width: 980px) {
+    padding: 0rem 3rem;
+  }
 `;
 
 const PrincipalBanner = styled.div`
@@ -13,6 +21,10 @@ const PrincipalBanner = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 1320px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 const Info = styled.div`
@@ -21,6 +33,10 @@ const Info = styled.div`
     color: var(--gray);
     padding: 1rem 0 2rem 0;
   }
+
+  @media (max-width: 600px) {
+    text-align: center;
+  }
 `;
 
 const Title = styled.h1`
@@ -28,6 +44,11 @@ const Title = styled.h1`
   font-size: 4.5rem;
   color: var(--dark-blue);
   line-height: 5.3rem;
+
+  @media (max-width: 600px) {
+    font-size: 2.5rem;
+    line-height: 3.3rem;
+  }
 `;
 
 const Image = styled.div`
@@ -37,23 +58,46 @@ const Image = styled.div`
     height: 35rem;
     top: 8rem;
     right: -10rem;
+    z-index: -1;
+
+    @media (max-width: 1320px) {
+      display: flex;
+      position: static;
+      width: 100%;
+      height: auto;
+    }
   }
 `;
 
 const ShorteningContainer = styled.div`
   background-color: #f0f1f6;
-  margin-top: 15rem;
+  margin-top: 18rem;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
   height: auto; //alterar depois
+
+  @media (max-width: 1020px) {
+    margin-top: 8rem;
+  }
+
+  .inputContainer {
+    padding: 0 15rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (max-width: 1250px) {
+    padding: 0rem 3rem;
+  }
 `;
 
 const InputContainer = styled.div`
   background-color: var(--dark-violet);
-  width: 60rem;
+  width: 70%;
   display: flex;
   justify-content: center;
   height: 10rem;
@@ -61,8 +105,12 @@ const InputContainer = styled.div`
   justify-content: center;
   margin-top: -20rem;
   position: absolute;
-  bottom: 40px;
   border-radius: 0.5rem;
+  transform: translate(0%, 95%);
+
+  @media (max-width: 980px) {
+    width: 80%;
+  }
 
   div {
     position: absolute;
@@ -95,7 +143,13 @@ const Input = styled.input`
 `;
 
 const LinksShortened = styled.div`
+  width: 100%;
   margin-top: 8rem;
+  padding: 0 15rem;
+
+  @media (max-width: 1250px) {
+    padding: 0 0rem;
+  }
 `;
 
 const Subtitle = styled.h2`
@@ -103,6 +157,10 @@ const Subtitle = styled.h2`
   color: var(--dark-blue);
   margin-top: 4rem;
   text-align: center;
+
+  @media (max-width: 450px) {
+    font-size: 1.8rem;
+  }
 
   p {
     font-size: 1rem;
@@ -114,9 +172,20 @@ const Subtitle = styled.h2`
 
 const CardsContainer = styled.div`
   margin-top: 4rem;
-  display: flex;
   gap: 3rem;
   height: auto;
+  padding: 0 15rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  @media (max-width: 1250px) {
+    padding: 2rem 0rem;
+  }
+
+  @media (max-width: 850px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const BoosterContainer = styled.div`

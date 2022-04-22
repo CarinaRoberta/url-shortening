@@ -1,5 +1,4 @@
 import React from "react";
-import { iconBrand } from "../../assets";
 import { CardInfo } from "../../mocks/Cards";
 import { Container, Info, Title } from "./styles";
 

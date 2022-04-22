@@ -13,6 +13,14 @@ const Content = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
 
+  @media (max-width: 1250px) {
+    padding: 2rem 3rem;
+  }
+
+  @media (max-width: 840px) {
+    flex-direction: column;
+  }
+
   .mapSite {
     display: flex;
     column-gap: 4rem;
@@ -20,13 +28,16 @@ const Content = styled.div`
 
     @media (max-width: 980px) {
       column-gap: 2rem;
-      flex-wrap: wrap;
       text-align: center;
+    }
+
+    @media (max-width: 840px) {
+      flex-wrap: wrap;
     }
   }
 
   @media (max-width: 980px) {
-    padding: 2rem 5rem;
+    padding: 2rem 3rem;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
