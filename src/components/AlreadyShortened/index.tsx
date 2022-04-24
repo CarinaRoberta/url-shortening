@@ -24,7 +24,9 @@ const AlreadyShortened: React.FC<IProps> = ({
   return (
     <Container>
       <NormalLink>{normalLink}</NormalLink>
-      <ShortenedLink>{shortenedLink}</ShortenedLink>
+      <ShortenedLink href={shortenedLink} target="_blank">
+        {shortenedLink}
+      </ShortenedLink>
 
       {copied ? (
         <Button
