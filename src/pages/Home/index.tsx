@@ -56,13 +56,16 @@ const Home: React.FC = () => {
         </PrincipalBanner>
       </Container>
       <ShorteningContainer>
-        <InputContainer>
-          <img src={bgInput} alt="" />
-          <div>
-            <Input placeholder="Shorten a link here..."></Input>
-            <Button borderRadius="0.5rem">Shorten it!</Button>
-          </div>
-        </InputContainer>
+        <div className='inputContainer'>
+          <InputContainer>
+            <img src={bgInput} alt="" />
+            <div>
+              <Input placeholder="Shorten a link here..."></Input>
+              <Button borderRadius="0.5rem">Shorten it!</Button>
+            </div>
+          </InputContainer>
+        </div>
+
         <LinksShortened>
           <AlreadyShortened />
           <AlreadyShortened />
