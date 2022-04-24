@@ -107,9 +107,14 @@ const InputContainer = styled.div`
   position: absolute;
   border-radius: 0.5rem;
   transform: translate(0%, 95%);
+  overflow: hidden;
 
   @media (max-width: 980px) {
     width: 80%;
+  }
+
+  @media (max-width: 590px) {
+    overflow: hidden;
   }
 
   div {
@@ -118,11 +123,33 @@ const InputContainer = styled.div`
     padding: 3rem;
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: 590px) {
+      flex-direction: column;
+
+      button {
+        margin-top: 2rem;
+        width: 100%;
+      }
+    }
   }
 
   img {
     width: 100%;
     height: 100%;
+  }
+
+  .error {
+    color: red;
+    font-size: 0.8rem;
+    padding-top: 0.5rem;
+    bottom: -1rem;
+    font-style: italic;
+
+    @media (max-width: 590px) {
+      bottom: 1.8rem;
+
+    }
   }
 `;
 
@@ -139,6 +166,11 @@ const Input = styled.input`
 
   &::placeholder {
     color: var(--gray);
+  }
+
+  @media (max-width: 590px) {
+    width: 100%;
+    font-size: 1rem;
   }
 `;
 
