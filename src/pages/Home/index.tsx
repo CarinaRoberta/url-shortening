@@ -7,6 +7,11 @@ import Header from "../../components/Header";
 import InfoCard from "../../components/InfoCard";
 import { CardInfo, cardsInfo } from "../../mocks/Cards";
 import {
+  getShortURL,
+  postShortURL as postShortURLService,
+  ShorteURL,
+} from "../../services/shortenUrl";
+import {
   Image,
   Info,
   PrincipalBanner,
@@ -23,6 +28,10 @@ import {
 
 const Home: React.FC = () => {
   const [cards, setCards] = useState<CardInfo[]>([]);
+  const [normalLink, setNormalLink] = useState("");
+  const [inputError, setInputError] = useState(false);
+  const [inputErrorMessage, setInputErrorMessage] = useState("");
+  const [shortenedLink, setShortenedLink] = useState<ShorteURL[]>([]);
 
   useEffect(() => {
     const getCards = async () => {
@@ -32,7 +41,23 @@ const Home: React.FC = () => {
     getCards();
   }, []);
 
-  console.log(cards);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (normalLink.length === 0) {
+      setInputError(true);
+      setInputErrorMessage("Please add a link");
+      return;
+    }
+    try {
+      setInputError(false);
+      setInputErrorMessage("");
+      await postShortURLService(normalLink);
+      const response = await getShortURL(normalLink);
+      setShortenedLink([...shortenedLink, response]);
+    } catch (e) {
+    }
+  };
+
 
   return (
     <>
@@ -56,19 +81,32 @@ const Home: React.FC = () => {
         </PrincipalBanner>
       </Container>
       <ShorteningContainer>
-        <div className='inputContainer'>
+        <div className="inputContainer">
           <InputContainer>
             <img src={bgInput} alt="" />
             <div>
-              <Input placeholder="Shorten a link here..."></Input>
-              <Button borderRadius="0.5rem">Shorten it!</Button>
+              <Input
+                placeholder="Shorten a link here..."
+                type="text"
+                onChange={(e) => setNormalLink(e.target.value)}
+                value={normalLink}
+                style={{ outline: inputError ? "2px solid red" : "none" }}
+              />
+              <Button onClick={(e) => handleSubmit(e)} borderRadius="0.5rem">
+                Shorten it!
+              </Button>
             </div>
+            {inputError && <div className="error">{inputErrorMessage}</div>}
           </InputContainer>
         </div>
 
         <LinksShortened>
-          <AlreadyShortened />
-          <AlreadyShortened />
+          {shortenedLink.map((shortened) => (
+            <AlreadyShortened
+              normalLink={shortened.result.original_link}
+              shortenedLink={shortened.result.full_short_link}
+            />
+          ))}
         </LinksShortened>
         <Subtitle>
           Advanced statistics
@@ -79,7 +117,12 @@ const Home: React.FC = () => {
         </Subtitle>
         <CardsContainer>
           {cards.map((card) => (
-            <InfoCard icon={card.icon} title={card.title} text={card.text} />
+            <InfoCard
+              key={card.title}
+              icon={card.icon}
+              title={card.title}
+              text={card.text}
+            />
           ))}
         </CardsContainer>
       </ShorteningContainer>
