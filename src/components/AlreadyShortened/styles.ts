@@ -28,7 +28,7 @@ const NormalLink = styled.p`
   }
 `;
 
-const ShortenedLink = styled.p`
+const ShortenedLink = styled.a`
   color: var(--cyan);
   margin-right: 1rem;
 `;
